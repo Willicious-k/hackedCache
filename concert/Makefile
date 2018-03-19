@@ -1,11 +1,13 @@
+TARGET:=$(shell basename $(shell pwd))
+
 all:
-	g++ concert.cpp -o concert
+	g++ $(TARGET).cpp -o $(TARGET)
 
 run:
-	./concert < test.txt
+	./$(TARGET) < test.txt
 
 clean:
-	rm concert
+	rm $(TARGET)
 
 edit:
-	vi concert.cpp
+	vi $(TARGET).cpp
