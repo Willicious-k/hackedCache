@@ -2,11 +2,12 @@
 - Archive for solved algorithm questions!
 
 ## Profiles and Source Site
-- [AlKook](https://algospot.com/user/profile/8499) in [Algospot](https://algospot.com)
 - [Willicious](https://www.hackerrank.com/Willicious) in [HackerRank](https://hackerrank.com)
+- [AlKook](https://algospot.com/user/profile/8499) in [Algospot](https://algospot.com)
 
 ## Solved Questions
-> C++, algospot.com
+> solved in Swift, hackerrank.com
+ - 
 
-
-> Swift, hackerrank.com
+> solved in C++, algospot.com
+ - 
