@@ -7,11 +7,11 @@
 
 ## Solved Questions
 > solved in Swift, hackerrank.com
- - []
+ - [appleAndOrange](0.swift/appleAndOrange)
  - []
  - []
 
 > solved in C++, algospot.com
- - [concert](0.Solved/1.cpp/concert)
- - [yulo](0.Solved/1.cpp/yulo)
- - [zeroone](0.Solved/1.cpp/zeroone)
+ - [concert](1.cpp/concert)
+ - [yulo](1.cpp/yulo)
+ - [zeroone](1.cpp/zeroone)
