@@ -14,6 +14,7 @@
 - [breakingTheRecords](0.swift/breakingTheRecords)
 - [catAndMouse](0.swift/catAndMouse)
 - [kangaroo](0.swift/kangaroo)
+- [superReducedString](0.swift/superReducedString)
 - [taumAndBday](0.swift/taumAndBday)
 
 > solved in C++, algospot.com
