@@ -43,7 +43,7 @@ public class LinkedList<T> {
 	public func append(_ value: T) {
 		let newNode = Node(value: value)
 
-		if lastNode = last {
+		if let lastNode = last {
 			lastNode.next = newNode
 			newNode.previous = lastNode
 			tail = newNode
@@ -55,7 +55,7 @@ public class LinkedList<T> {
 	}
 
 	public func node(atIndex index: Int) -> Node? {
-		guard count > 0, count > index, index >= 0 else { return nil }
+		guard nodeCount > 0, nodeCount > index, index >= 0 else { return nil }
 
 		var node = head
 		if index == 0 {
@@ -69,8 +69,11 @@ public class LinkedList<T> {
 	}
 
 	public subscript(index: Int) -> T {
-		let node = node(atIndex: index)
+		let node = self.node(atIndex: index)
 		return node.data
 	}
 
+	// insertAt
+	// map
+	// filter
 }
