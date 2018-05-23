@@ -8,15 +8,15 @@
 ## Data Structures in Swift
 > re-studied from [Swift-Algorithm-Club](https://github.com/raywenderlich/swift-algorithm-club)
 
-- Stack
-- Queue
-- Doublely Linked List
-- Binary Search Tree
-- Heap
-- Graph
+1. Stack
+2. Queue
+3. Doublely Linked List
+4. Binary Search Tree
+5. Heap
+6. Graph
 
 ## Solved Questions
-> solved in Swift, hackerrank.com
+> solved in Swift, questions are from [HackerRank](https://hackerrank.com)
 
 - [appleAndOrange](0.swift/appleAndOrange)
 - [array-ds](0.swift/array-ds)
@@ -28,7 +28,7 @@
 - [superReducedString](0.swift/superReducedString)
 - [taumAndBday](0.swift/taumAndBday)
 
-> solved in C++, algospot.com
+> solved in C++, questions are from [Algospot](https://algospot.com)
 
 - [concert](1.cpp/concert)
 - [yulo](1.cpp/yulo)

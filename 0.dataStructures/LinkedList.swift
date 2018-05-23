@@ -34,6 +34,12 @@ public class LinkedList<T> {
 		return tail
 	}
 
+	public func removeAll() {
+		head = nil
+		tail = nil
+		nodeCount = 0
+	}
+
 	public func append(_ value: T) {
 		let newNode = Node(value: value)
 

@@ -1,8 +1,8 @@
 all:
-	swiftc -o dsTest *.swift
+	swiftc -o testing *.swift
 
 run:
-	./dsTest
+	./testing
 
 clean:
-	rm dsTest
+	rm testing
