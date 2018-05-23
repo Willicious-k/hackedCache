@@ -7,7 +7,7 @@ public class LinkedListNode<T> {
 
 	public init(value: T) {
 		self.data = value
-	}	
+	}
 
 }
 
@@ -19,7 +19,7 @@ public class LinkedList<T> {
 	private var nodeCount: Int = 0
 
 	public var isEmpty: Bool {
-		return head == nil 
+		return head == nil
 	}
 
 	public var count: Int {
@@ -29,11 +29,11 @@ public class LinkedList<T> {
 	public var first: Node? {
 		return head
 	}
-	
+
 	public var last: Node? {
 		return tail
 	}
-	
+
 	public func append(_ value: T) {
 		let newNode = Node(value: value)
 
@@ -48,5 +48,23 @@ public class LinkedList<T> {
 		count += 1
 	}
 
-}
+	public func node(atIndex index: Int) -> Node? {
+		guard count > 0, count > index, index >= 0 else { return nil }
 
+		var node = head
+		if index == 0 {
+			return node
+		} else {
+			for _ in 1...index {
+				node = node.next
+			}
+		}
+		return node
+	}
+
+	public subscript(index: Int) -> T {
+		let node = node(atIndex: index)
+		return node.value
+	}
+
+}

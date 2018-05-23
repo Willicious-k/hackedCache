@@ -1,7 +1,7 @@
 import Foundation
 
-public class Stack<T> {
-	
+public struct Stack<T> {
+
 	fileprivate var internalData: [T] = [T]()
 
 	public var isEmpty: Bool {
@@ -11,7 +11,7 @@ public class Stack<T> {
 	public var count: Int {
 		return internalData.count
 	}
-	
+
 	public var top: T? {
 		return internalData.last
 	}
