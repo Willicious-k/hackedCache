@@ -21,15 +21,11 @@ public struct Queue<T> {
 		}
 	}
 
-	public var rear: T? {
-		return internalData.last
-	}
-
-	public func enqueue(_ element: T) {
+	public mutating func enqueue(_ element: T) {
 		internalData.append(element)
 	}
 
-	public func dequeue() -> T? {
+	public mutating func dequeue() -> T? {
 		guard head < internalData.count, let front = internalData[head] else {
 			return nil
 		}
