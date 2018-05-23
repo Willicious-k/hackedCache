@@ -10,7 +10,7 @@
 
 1. Stack
 2. Queue
-3. Doublely Linked List
+3. Doubly Linked List
 4. Binary Search Tree
 5. Heap
 6. Graph
