@@ -12,10 +12,26 @@ list.append(3)
 print(list)
 print("list.count: \(list.count)")
 print("+======+")
-let target = list.node(at: 2)!
-print("node at 2: \(target)")
+
+let insertTarget = list.node(at: 2)!
+print("node at 2: \(insertTarget)")
 print("+======+")
+
 for _ in 1...4 {
-  list.insert(-1, after: target)
+  list.insert(-1, after: insertTarget)
 }
+print(list)
+
+print("+======+")
+let poppedValue = list.pop()
+print(list)
+
+print("+======+")
+let removedValue = list.removeLast()
+print(list)
+
+print("+======+")
+let removeTarget = list.node(at: 2)!
+print("node at 2: \(removeTarget)")
+let removed = list.remove(after: removeTarget)
 print(list)
