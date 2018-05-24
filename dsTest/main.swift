@@ -1,3 +1,3 @@
 import Foundation
 
-var list = LinkedList<String>()
+var list = LinkedList<Int>()
