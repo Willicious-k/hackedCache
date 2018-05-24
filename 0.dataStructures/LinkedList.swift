@@ -1,76 +1,51 @@
 import Foundation
 
-public class LinkedListNode<T> {
-	var data: T
-	var next: LinkedListNode?
-	weak var previous: LinkedListNode?
+public class Node<Value> {
 
-	public init(value: T) {
-		self.data = value
+	public var value: Value
+	public var next: Node?
+	public weak var previous: Node?
+
+	public init(value: Value, next: Node? = nil, previous: Node? = nil) {
+		self.value = value
+		self.next = next
+		self.previous = previous
 	}
 
 }
 
-public class LinkedList<T> {
-	public typealias Node = LinkedListNode<T>
+extension Node: CustomStringConvertible {
 
-	private var head: Node?
-	private var tail: Node?
-	private var nodeCount: Int = 0
+	public var description: String {
+		guard let next = next else {
+			return "\(value)"
+		}
+		return "\(value) -> " + String(describing: next) + " "
+	}
+
+}
+
+public struct LinkedList<Value> {
+
+	public var head: Node<Value>?
+	public var tail: Node<Value>?
+	public var count: Int = 0
+
+	public init() { }
 
 	public var isEmpty: Bool {
 		return head == nil
 	}
 
-	public var count: Int {
-		return nodeCount
-	}
+}
 
-	public var first: Node? {
-		return head
-	}
+extension LinkedList: CustomStringConvertible {
 
-	public var last: Node? {
-		return tail
-	}
-
-	public func removeAll() {
-		head = nil
-		tail = nil
-		nodeCount = 0
-	}
-
-	public func append(_ value: T) {
-		let newNode = Node(value: value)
-
-		if lastNode = last {
-			lastNode.next = newNode
-			newNode.previous = lastNode
-			tail = newNode
-		} else {
-			head = newNode
+	public var description: String {
+		guard let head = head else {
+			return "It's Empty"
 		}
-
-		nodeCount += 1
-	}
-
-	public func node(atIndex index: Int) -> Node? {
-		guard count > 0, count > index, index >= 0 else { return nil }
-
-		var node = head
-		if index == 0 {
-			return node
-		} else {
-			for _ in 1...index {
-				node = node.next
-			}
-		}
-		return node
-	}
-
-	public subscript(index: Int) -> T {
-		let node = node(atIndex: index)
-		return node.data
+		return String(describing: head)
 	}
 
 }

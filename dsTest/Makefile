@@ -1,5 +1,5 @@
 all:
-	swiftc -o testing *.swift
+	swiftc -o testing main.swift ../0.dataStructures/*.swift
 
 run:
 	./testing
