@@ -20,6 +20,10 @@ public struct Stack<T> {
 		return storage.last
 	}
 
+	public var bottom: T? {
+		return storage.first
+	}
+
 	//MARK:- essential operations
 	public mutating func push(_ element: T) {
 		storage.append(element)

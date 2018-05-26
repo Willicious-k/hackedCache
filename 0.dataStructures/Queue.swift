@@ -1,46 +1,42 @@
 import Foundation
 
-public struct Queue<T> {
+public protocol Queue {
+	associatedtype Element
+	mutating func enqueue(_ element: Element) -> Bool
+	mutating func dequeue() -> Element?
+	var isEmpty: Bool { get }
+	var count: Int { get }
+	var head: Element? { get }
+	var tail: Element? { get }
+}
 
-	fileprivate var internalData:[T?] = [T]()
-	fileprivate var head: Int = 0
+public struct QueueArray<T>: Queue {
+	private var array: [T] = []
+	public init() {}
 
 	public var isEmpty: Bool {
-		return internalData.count == 0
+		return array.isEmpty
 	}
 
 	public var count: Int {
-		return internalData.count - head
+		return array.count
 	}
 
-	public var front: T? {
-		if isEmpty {
-			return nil
-		} else {
-			return internalData[head]
-		}
+	public var head: T? {
+		return array.first
 	}
 
-	public mutating func enqueue(_ element: T) {
-		internalData.append(element)
+	public var tail: T? {
+		return array.last
+	}
+
+	public mutating func enqueue(_ element: T) -> Bool {
+		array.append(element)
+		return true
 	}
 
 	public mutating func dequeue() -> T? {
-		guard head < internalData.count, let front = internalData[head] else {
-			return nil
-		}
-
-		internalData[head] = nil
-		head += 1
-
-		//occasional trimming
-		let capacity = Double(head) / Double(internalData.count)
-		if internalData.count > 100 && capacity > 0.25 {
-			internalData.removeFirst(head)
-			head = 0
-		}
-
-		return front
+		return isEmpty ? nil : array.removeFirst()
 	}
 
 }
