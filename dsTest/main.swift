@@ -35,3 +35,7 @@ let removeTarget = list.node(at: 2)!
 print("node at 2: \(removeTarget)")
 let removed = list.remove(after: removeTarget)
 print(list)
+
+// conformed collection protocol
+let sum = list.reduce(0, +)
+print("sum of current list: \(sum)")

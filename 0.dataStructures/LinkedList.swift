@@ -53,6 +53,7 @@ public struct LinkedList<Value> {
 
 	//MARK:- Insert
 	public mutating func push(_ value: Value) {
+		// pushFront can avoid wholeCopy (can be partially referenced)
 		head = Node(value: value, next: head, previous: nil)
 		count += 1
 		if tail == nil {
@@ -61,10 +62,13 @@ public struct LinkedList<Value> {
 	}
 
 	public mutating func append(_ value: Value) {
+		copyNodes() // COW
+
 		guard !isEmpty else {
 			push(value)
 			return
 		}
+
 		count += 1
 		tail!.next = Node(value: value, next: nil, previous: tail)
 		tail = tail!.next
@@ -72,10 +76,13 @@ public struct LinkedList<Value> {
 
 	@discardableResult
 	public mutating func insert(_ value: Value, after node: Node<Value>) -> Node<Value> {
+		copyNodes() // COW
+
 		guard tail !== node else {
 			append(value)
 			return tail!
 		}
+
 		let target = Node(value: value, next: node.next, previous: node)
 		node.next!.previous = target
 		node.next = target
@@ -86,6 +93,8 @@ public struct LinkedList<Value> {
 	//MARK:- remove
 	@discardableResult
 	public mutating func pop() -> Value? {
+		copyNodes() // COW
+
 		defer {
 			count -= 1
 			head = head?.next
@@ -94,11 +103,14 @@ public struct LinkedList<Value> {
 		if isEmpty {
 			tail = nil
 		}
+
 		return head?.value
 	}
 
 	@discardableResult
 	public mutating func removeLast() -> Value? {
+		copyNodes() // COW
+
 		guard let head = head else { // count == 0
 			return nil
 		}
@@ -122,6 +134,7 @@ public struct LinkedList<Value> {
 
 	@discardableResult
 	public mutating func remove(after node: Node<Value>) -> Value? {
+		copyNodes() // COW
 
 		guard let target = node.next else {
 			return nil
@@ -136,6 +149,27 @@ public struct LinkedList<Value> {
 		node.next = target.next
 
 		return target.value
+	}
+
+	// MARK: implement COW principle
+	private mutating func copyNodes() {
+		// COW optimization #1: isKnownUniquelyReferenced
+		// only proceed to Copy when head's referenceCount is not 1
+		guard !isKnownUniquelyReferenced(&head), var oldNode = head else {
+			return
+		}
+
+		head = Node(value: oldNode.value)
+		var newNode = head
+
+		while let nextOldNode = oldNode.next {
+			newNode!.next = Node(value: nextOldNode.value)
+			newNode = newNode!.next
+
+			oldNode = nextOldNode
+		}
+
+		tail = newNode
 	}
 
 }
@@ -154,6 +188,52 @@ extension LinkedList: CustomStringConvertible {
 			result +=  " <=> " + String(describing: currentNode)
 		}
 		return result
+	}
+
+}
+
+//MARK: conform Collection protocol
+extension LinkedList: Collection {
+
+	public struct Index: Comparable {
+		public var node: Node<Value>?
+
+		static public func == (lhs: Index, rhs: Index) -> Bool {
+			switch (lhs.node, rhs.node) {
+			case let (left?, right?):
+				return left.next === right.next
+			case (nil, nil):
+				return true
+			default:
+				return false
+			}
+		}
+
+		static public func < (lhs: Index, rhs: Index) -> Bool {
+			guard lhs != rhs else {
+				return false
+			}
+			// WOW
+			let nodes = sequence(first: lhs.node) { $0?.next }
+			return nodes.contains { $0 === rhs.node }
+		}
+
+	}
+
+	public var startIndex: Index {
+		return Index(node: head)
+	}
+
+	public var endIndex: Index {
+		return Index(node: tail?.next)
+	}
+
+	public func index(after i: Index) -> Index {
+		return Index(node: i.node?.next)
+	}
+
+	public subscript(position: Index) -> Value {
+		return position.node!.value
 	}
 
 }
