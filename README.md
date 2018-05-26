@@ -25,6 +25,7 @@
 - [breakingTheRecords](1.swift/breakingTheRecords)
 - [catAndMouse](1.swift/catAndMouse)
 - [chocolateFeast](1.swift/chocolateFeast)
+- [coinChange](1.swift/coinChange)
 - [kangaroo](1.swift/kangaroo)
 - [superReducedString](1.swift/superReducedString)
 - [taumAndBday](1.swift/taumAndBday)
