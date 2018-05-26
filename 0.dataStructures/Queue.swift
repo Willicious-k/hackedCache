@@ -1,5 +1,6 @@
 import Foundation
 
+//MARK:- default requirements
 public protocol Queue {
 	associatedtype Element
 	mutating func enqueue(_ element: Element) -> Bool
@@ -10,8 +11,10 @@ public protocol Queue {
 	var tail: Element? { get }
 }
 
+//MARK:- implemented with array
 public struct QueueArray<T>: Queue {
 	private var array: [T] = []
+
 	public init() {}
 
 	public var isEmpty: Bool {
@@ -39,4 +42,40 @@ public struct QueueArray<T>: Queue {
 		return isEmpty ? nil : array.removeFirst()
 	}
 
+}
+
+//MARK:- implemented with doubly linked list
+public class QueueLinkedList<T>: Queue {
+	private var list = LinkedList<T>()
+
+	public init() {}
+
+	public var isEmpty: Bool {
+		return list.isEmpty
+	}
+
+	public var count: Int {
+		return list.count
+	}
+
+	public var head: T? {
+		return list.head?.value
+	}
+
+	public var tail: T? {
+		return list.tail?.value
+	}
+
+	public func enqueue(_ element: T) -> Bool {
+		list.append(element)
+		return true
+	}
+
+	// ToDo: change linked list's method name
+	public func dequeue() -> T? {
+		guard !list.isEmpty, let element = list.first else { return nil }
+		return list.pop()
+	}
+
+	// ToDo: RingBuffer
 }
