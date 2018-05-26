@@ -32,6 +32,7 @@
 
 > solved in C++, questions are from [Algospot](https://algospot.com)
 
+- [coins](2.cpp/coins)
 - [concert](2.cpp/concert)
 - [yulo](2.cpp/yulo)
 - [zeroone](2.cpp/zeroone)
