@@ -30,7 +30,9 @@ struct UInt128{
     return UInt128(resultHigh, resultLow)
   }
 
-  // static func * (lhs: UInt128, rhs: UInt128) -> UInt128
+  static func * (lhs: UInt128, rhs: UInt128) -> UInt128 {
+
+  }
 }
 
 extension UInt128: CustomStringConvertible {
@@ -46,11 +48,11 @@ func fibonacciModified(t1: Int, t2: Int, n: Int) -> String {
   cache.append( UInt128(t1) )
   cache.append( UInt128(t2) )
 
-  // for i in 2..<n {
-  //   cache.append( cache[i-2] + (cache[i-1] * cache[i-1]) )
-  // }
+  for i in 2..<n {
+    // cache.append( cache[i-2] + (cache[i-1] * cache[i-1]) )
+  }
 
-  return ""
+  return String(describing: cache[n-1])
 }
 
 // Main - input handling
