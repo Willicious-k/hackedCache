@@ -1,18 +1,56 @@
 import Foundation
 
 // Helpers
+struct UInt128{
+  var value: (UInt64, UInt64) = (0, 0)
 
-// Logic
-func fibonacciModified(t1: Int, t2: Int, n: Int) -> UInt64 {
-  var cache = Array<UInt64>(repeating: 0, count: n+1)
-  cache[1] = UInt64(truncating: (t1 as? NSNumber)!)
-  cache[2] = UInt64(truncating: (t2 as? NSNumber)!)
-
-  for i in 3...n {
-    cache[i] = cache[i-2] + (cache[i-1] * cache[i-1])
+  init() {
+    self.value = (0, 0)
   }
 
-  return cache[n]
+  init(_ a: Int) {
+    self.value = (0, UInt64(Double(a)) )
+  }
+
+  init(_ a: Int, _ b: Int ) {
+    self.value = (UInt64(Double(a)), UInt64(Double(b)))
+  }
+
+  init (_ a: UInt64, _ b: UInt64) {
+    self.value = (a, b)
+  }
+
+  static func + (lhs: UInt128, rhs: UInt128) -> UInt128 {
+    let (leftHigh, leftLow) = lhs.value
+    let (rightHigh, rightLow) = rhs.value
+
+    let (resultLow, overflow) = leftLow.addingReportingOverflow(rightLow)
+    let resultHigh = rightHigh + leftHigh  + (overflow ? 1 : 0)
+
+    return UInt128(resultHigh, resultLow)
+  }
+
+  // static func * (lhs: UInt128, rhs: UInt128) -> UInt128
+}
+
+extension UInt128: CustomStringConvertible {
+  var description: String {
+    let (high, low) = self.value
+    return String(high) + String(low)
+  }
+}
+
+// Logic
+func fibonacciModified(t1: Int, t2: Int, n: Int) -> String {
+  var cache = Array<UInt128>()
+  cache.append( UInt128(t1) )
+  cache.append( UInt128(t2) )
+
+  // for i in 2..<n {
+  //   cache.append( cache[i-2] + (cache[i-1] * cache[i-1]) )
+  // }
+
+  return ""
 }
 
 // Main - input handling
