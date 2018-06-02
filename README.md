@@ -26,9 +26,10 @@
 - [catAndMouse](1.swift/catAndMouse)
 - [chocolateFeast](1.swift/chocolateFeast)
 - [coinChange](1.swift/coinChange)
-- [fiboModified](1.swift/fiboModified) <- working
+- ~~[fairRation](1.swift/fairRation)~~
+- ~~[fiboModified](1.swift/fiboModified)~~
 - [kangaroo](1.swift/kangaroo)
-- [stockMaximize](1.swift/stockMaximize) <- working
+- ~~[stockMaximize](1.swift/stockMaximize)~~
 - [superReducedString](1.swift/superReducedString)
 - [taumAndBday](1.swift/taumAndBday)
 
