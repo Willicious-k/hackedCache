@@ -4,9 +4,17 @@ import Foundation
 
 // Logic
 func maximize(prices: [Int]) -> Int {
-  // buy 1 stock, sell stocks, or do nothing...
+  let reversed = Array<Int>(prices.reversed())
+  var maxCost = 1
   var profit = 0
-  var stock = 0
+
+  for c in reversed {
+    if c > maxCost {
+      maxCost = c
+      continue
+    }
+    profit += (maxCost - c)
+  }
 
   return profit
 }
