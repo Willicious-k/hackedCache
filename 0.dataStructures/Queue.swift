@@ -73,9 +73,7 @@ public class QueueLinkedList<T>: Queue {
 
 	// ToDo: change linked list's method name
 	public func dequeue() -> T? {
-		guard !list.isEmpty, let element = list.first else { return nil }
+		guard !list.isEmpty, let _ = list.first else { return nil }
 		return list.pop()
 	}
-
-	// ToDo: RingBuffer
 }

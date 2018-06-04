@@ -1,3 +1,3 @@
 import Foundation
 
-var listQueue = QueueLinkedList<Int> ()
+var bst = BinarySearchTree<Int>()
