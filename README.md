@@ -12,8 +12,8 @@
 2. Queue
 3. Doubly Linked List
 4. Binary Search Tree
-5. Heap
-6. Graph
+5. ~~Heap~~
+6. ~~Graph~~
 
 ## Solved Questions
 > solved in Swift, questions are from [HackerRank](https://hackerrank.com)

@@ -15,7 +15,7 @@ extension BinaryNode: CustomStringConvertible {
     return String(describing: value)
   }
 }
-
+//MARK: trying to change here, traverse should be in tree, not node
 extension BinaryNode {
   public func traverseInOrder(visit: (Element) -> Void) {
     leftChild?.traverseInOrder(visit: visit)

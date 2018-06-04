@@ -6,5 +6,5 @@
 2. Queue
 3. Doubly Linked List
 4. Binary Search Tree
-5. Heap
-6. Graph
+5. ~~Heap~~
+6. ~~Graph~~
