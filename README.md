@@ -29,6 +29,7 @@
 - ~~[fairRation](1.swift/fairRation)~~
 - ~~[fiboModified](1.swift/fiboModified)~~
 - [kangaroo](1.swift/kangaroo)
+- [leftRotation](1.swift/leftRotation)
 - [stockMaximize](1.swift/stockMaximize)
 - [superReducedString](1.swift/superReducedString)
 - [taumAndBday](1.swift/taumAndBday)
